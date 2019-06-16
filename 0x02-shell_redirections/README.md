@@ -1,0 +1,1 @@
+1. Script that prints "Hellow,World", Followed by a new line to the standard outputx
