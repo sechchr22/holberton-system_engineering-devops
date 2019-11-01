@@ -2,7 +2,7 @@
 # This script is for display the file information
 if [ -e "holbertonschool" ]
 then 
-    echo "holbertonschool file exist"
+    echo "holbertonschool file exists"
 
     if [ -s "holbertonschool" ]
     then
@@ -16,5 +16,5 @@ then
         echo "holbertonschool is a regular file"
     fi
 else
-    echo "holbertonschool file does not exists"
+    echo "holbertonschool file does not exist"
 fi
