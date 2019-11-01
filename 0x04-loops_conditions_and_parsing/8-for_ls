@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script is for display the content in the current directory using a while loop
+ls > list 
+for file in $(cat list)
+do
+    echo "$file" | cut -f 2- -d '-' 
+done
