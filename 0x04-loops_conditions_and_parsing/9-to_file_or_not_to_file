@@ -2,7 +2,7 @@
 # This script is for display the file information
 if [ -e "holbertonschool" ]
 then 
-    echo "holbertonschool file exists"
+    echo "holbertonschool file exist"
 
     if [ -s "holbertonschool" ]
     then
