@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Bash script that displays To infinity and beyond indefinitely
+trap trap_script SIGTERM
+
+trap_script() 
+{
+  echo "I am invincible!!!"
+}
+
+i=1
+while [ $i = 1 ]
+do
+    echo "To infinity and beyond"
+    sleep 2    
+done
