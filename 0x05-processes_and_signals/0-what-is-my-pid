@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This bash script display the current bash PID
+pidof bash
