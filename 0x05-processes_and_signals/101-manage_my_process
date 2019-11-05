@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 # Bash scrip to manage manage_my_proces
+
+if [ "$#" -ne 1 ]
+then
+    echo "Usage: manage_my_process {start|stop|restart}"
+fi
+
 case $1 in
     start)
         ./manage_my_process &
