@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
-# Bash scrip to manage manage_my_proces
-
-if [ "$#" -ne 1 ]
-then
-    echo "Usage: manage_my_process {start|stop|restart}"
-fi
+# Bash scrip to manage manage_my_process
 
 case $1 in
     start)
@@ -13,12 +8,12 @@ case $1 in
         echo "manage_my_process started"
         ;;
     stop)
-        pkill -f "manage_my_proccess"
+        kill "$(cat "/var/run/my_process.pid")"
         rm "/var/run/my_process.pid"
         echo "manage_my_process stopped"
         ;;
     restart)
-        pkill -f "manage_my_proccess"
+        kill "$(cat "/var/run/my_process.pid")"
         rm "/var/run/my_process.pid"
         ./manage_my_process &
         echo "$!" > "/var/run/my_process.pid"
