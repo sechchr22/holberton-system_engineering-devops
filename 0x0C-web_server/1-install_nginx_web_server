@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Install and set Nginx web server
+apt-get update
+apt-get install nginx
+ufw allow 'Nginx HTTP'
+echo "Holberton School" > /var/www/html/holbertonschool.html
