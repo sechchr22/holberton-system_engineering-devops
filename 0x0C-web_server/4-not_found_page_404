@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Install and set Nginx web server
+apt-get -y update
+apt-get -y install nginx
+
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+
+#configuring redirect
+old_string="server_name _;"
+new_string="rewrite ^\/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
+sed -i "s#$old_string#$new_string#" /etc/nginx/sites-available/default
+
+#creating custom page
+echo "Ceci n'est pas une page" | sudo tee -a /usr/share/nginx/html/custom_404.html
+
+#setting custome page when error message occurs
+
+old_string_2="# Add index.php to the list if you are using PHP"
+new_string_2="error_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}\n"
+sed -i "s%$old_string_2%$new_string_2%" /etc/nginx/sites-available/default
+
+service nginx restart
