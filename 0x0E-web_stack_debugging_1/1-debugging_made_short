@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Same as 0-nginx_likes_port_80 script but
+# just making sure to kill the nginx proccess at the end of the script
+sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
+service nginx restart
+pkill -o nginx
