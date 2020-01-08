@@ -1,0 +1,9 @@
+sudo apt -y update
+sudo apt -y install ufw
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 22
+sudo ufw allow https
+sudo ufw allow http
+sudo ufw enable
+sudo ufw status
