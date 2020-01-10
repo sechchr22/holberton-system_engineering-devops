@@ -9,5 +9,5 @@ dig "web-02".$1 | grep -A1 'ANSWER SECTION:' | awk '/IN/' | awk '{print "The sub
 fi
 if [ "$#" -eq 2 ];
 then
-dig "$2".$1 | grep -A1 'ANSWER SECTION:' | awk '/IN/' | awk '{print "The subdomain www is a " $4 " record and points to "$5}'
+dig "$2".$1 | grep -A1 'ANSWER SECTION:' | awk '/IN/' | awk -v sub_domain="$2" '{print "The subdomain " sub_domain " is a " $4 " record and points to "$5}'
 fi
