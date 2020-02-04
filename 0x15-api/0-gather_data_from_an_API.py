@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 '''
+Extracting info from API
 '''
 import requests
 import sys
@@ -28,10 +29,9 @@ if __name__ == "__main__":
 
             if (dictio.get('completed')):
                 NUMBER_OF_DONE_TASKS += 1
+                TASKS += '\t' + dictio['title'] + '\n'
 
             TOTAL_NUMBER_OF_TASKS += 1
-
-            TASKS += '\t' + dictio['title'] + '\n'
 
     TASKS = TASKS.rstrip()
     LINE = '{} is done with tasks({}/{}):'.format(
