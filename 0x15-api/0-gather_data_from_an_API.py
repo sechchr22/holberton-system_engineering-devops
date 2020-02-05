@@ -2,6 +2,7 @@
 '''
 Extracting info from API
 '''
+import csv
 import requests
 import sys
 
@@ -18,23 +19,18 @@ if __name__ == "__main__":
     dict_name = r_name.json()
     dict_todos = r_todos.json()
 
-    EMPLOYEE_NAME = dict_name.get('name')
-    NUMBER_OF_DONE_TASKS = 0
-    TOTAL_NUMBER_OF_TASKS = 0
-    TASKS = ''
+    USER_NAME = dict_name.get('username')
+    csv_file = csv.write(open('{}.csv'.format(user_id), 'wb+'))
 
     for dictio in dict_todos:
 
         if (dictio.get('userId') is int(user_id)):
 
             if (dictio.get('completed')):
-                NUMBER_OF_DONE_TASKS += 1
-                TASKS += '\t' + dictio['title'] + '\n'
+                TASK_COMPLETED_STATUS = "True"
+            else:
+                TASK_COMPLETED_STATUS = "False"
 
-            TOTAL_NUMBER_OF_TASKS += 1
+            TASK_TITTLE = dictio.get('title')
 
-    TASKS = TASKS.rstrip()
-    LINE = '{} is done with tasks({}/{}):'.format(
-           EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, TOTAL_NUMBER_OF_TASKS)
-
-    print('{}\n{}'.format(LINE, TASKS))
+    csv_file.write(user_id, USER_NAME, TASK_COMPLETED_STATUS, TASK_TITTLE)
