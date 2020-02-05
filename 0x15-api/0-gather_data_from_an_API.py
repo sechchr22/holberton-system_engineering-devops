@@ -19,18 +19,24 @@ if __name__ == "__main__":
     dict_name = r_name.json()
     dict_todos = r_todos.json()
 
-    USER_NAME = dict_name.get('username')
-    csv_file = csv.write(open('{}.csv'.format(user_id), 'wb+'))
+    EMPLOYEE_NAME = dict_name.get('name')
+
+    NUMBER_OF_DONE_TASKS = 0
+    TOTAL_NUMBER_OF_TASKS = 0
+    TASKS = ''
 
     for dictio in dict_todos:
 
         if (dictio.get('userId') is int(user_id)):
 
             if (dictio.get('completed')):
-                TASK_COMPLETED_STATUS = "True"
-            else:
-                TASK_COMPLETED_STATUS = "False"
+                NUMBER_OF_DONE_TASKS += 1
+                TASKS += '\t' + dictio.get('title') + '\n'
 
-            TASK_TITTLE = dictio.get('title')
+            TOTAL_NUMBER_OF_TASKS += 1
 
-    csv_file.write(user_id, USER_NAME, TASK_COMPLETED_STATUS, TASK_TITTLE)
+    TASKS = TASKS.rstrip()
+    LINE = 'Employee {} is done with tasks({}/{}):\n{}'.format(
+        EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, TOTAL_NUMBER_OF_TASKS, TASKS)
+
+    print(LINE)
