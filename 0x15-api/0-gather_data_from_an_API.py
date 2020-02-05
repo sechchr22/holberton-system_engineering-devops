@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
             if (dictio.get('completed')):
                 NUMBER_OF_DONE_TASKS += 1
-                TASKS += '\t' + dictio.get('title') + '\n'
+                TASKS += '\t' + ' ' + dictio.get('title') + '\n'
 
             TOTAL_NUMBER_OF_TASKS += 1
 
