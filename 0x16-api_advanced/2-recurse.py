@@ -20,10 +20,11 @@ def recurse(subreddit, hot_list=[]):
     r_json = r.json()
     children = r_json.get('data').get('children')
 
-    if len(children) == len(hot_list):
+    if len(children) is len(hot_list):
+        print(hot_list)
+        print(len(hot_list))
         return (hot_list)
 
-    title = children[len(hot_list) + 1].get('data').get('title')
-
+    title = children[len(hot_list)].get('data').get('title')
     hot_list.append(title)
     return (recurse(subreddit), hot_list)
